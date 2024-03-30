@@ -2,10 +2,9 @@
 // Coursework 2023/2024
 //
 // Submission by
-// YOUR_NAME_GOES_HERE
+//Aleksejs Moscanovs
 // YOUR_STUDENT_ID_NUMBER_GOES_HERE
-// YOUR_EMAIL_GOES_HERE
-
+//aleksejs.moscanovs@city.ac.uk
 
 // DO NOT EDIT starts
 interface TemporaryNodeInterface {
