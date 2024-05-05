@@ -21,4 +21,29 @@ public class HashID {
 	    throw new Exception("No new line at the end of input to HashID");
 	}
     }
+
+	public int calculateDistance(byte[] hashID1, byte[] hashID2) {
+		int distance = 0;
+		for (int i = 0; i < hashID1.length; i++) {
+			int xorResult = hashID1[i] ^ hashID2[i];
+			for (int j = 7; j >= 0; j--) {
+				if (((xorResult >> j) & 1) == 1) {
+					return distance;
+				}
+				distance++;
+			}
+		}
+		return distance;
+	}
+
+	public String convertToHex(byte[] hashID) {
+		StringBuilder hexString = new StringBuilder();
+		for (byte b : hashID) {
+			String hex = Integer.toHexString(0xff & b);
+			if (hex.length() == 1) hexString.append('0');
+			hexString.append(hex);
+		}
+		return hexString.toString();
+	}
+
 }

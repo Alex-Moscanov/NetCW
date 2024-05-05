@@ -76,4 +76,25 @@ public class TemporaryNode implements TemporaryNodeInterface {
             return null;
         }
     }
+
+    public void findClosestNode(String hashID) {
+        try {
+            writer.write("NEAREST? " + hashID + "\n");
+            writer.flush();
+            String response;
+            while ((response = reader.readLine()) != null) {
+                if (response.startsWith("NODES")) {
+                    int numNodes = Integer.parseInt(response.split(" ")[1]);
+                    for (int i = 0; i < numNodes; i++) {
+                        String nodeInfo = reader.readLine();
+                        System.out.println("Closest node: " + nodeInfo);
+                    }
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error finding closest node: " + e.getMessage());
+        }
+
+    }
 }
